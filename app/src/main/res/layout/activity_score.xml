@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+
+                <import type="android.view.View" />
+
+                <import type="com.bytepace.dimusco.ui.editor.ScoreViewModel.EditMode" />
+
+                <variable
+                    name="viewModel"
+                    type="com.bytepace.dimusco.ui.editor.ScoreViewModel" />
+
+        </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background">
+
+
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/layout_header" />
+
+<!--                <com.bytepace.dimusco.helper.VerticalSeekBar-->
+<!--                    android:id="@+id/seeker_eraser"-->
+<!--                    android:layout_width="48dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:thumb="@drawable/seekbar_thumb"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/cl_score_colors"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/brush_preview" />-->
+
+                <FrameLayout
+                    android:id="@+id/container_eraser"
+                    style="@style/EditorSeekBarContainer"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/cl_score_colors"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eraser_preview">
+
+                        <androidx.appcompat.widget.AppCompatSeekBar
+                            android:id="@+id/seeker_eraser"
+                            style="@style/EditorSeekBar"
+                            android:max="1100"
+                            android:progress="@={viewModel.eraserThicknessProgress}"
+                            android:visibility="@{viewModel.selectedMode == EditMode.ERASER ? View.VISIBLE : View.GONE}" />
+                </FrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_score_colors"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/seeker_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_eraser">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="20dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_arrow_top"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="@+id/list_colors"
+                            app:layout_constraintStart_toStartOf="@+id/list_colors"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_down"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/list_colors"
+                            app:layout_constraintStart_toStartOf="@+id/list_colors" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/list_colors"
+                            android:layout_width="40dp"
+                            android:layout_height="0dp"
+                            android:layout_marginBottom="4dp"
+                            android:visibility="@{viewModel.selectedMode != EditMode.ERASER ? View.VISIBLE : View.GONE}"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.bytepace.dimusco.helper.VerticalSeekBar
+                    android:id="@+id/seeker_size"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="44dp"
+                    android:thumb="@drawable/seekbar_thumb"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_score_colors" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_score_markers"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cl_score_colors"
+                    app:layout_constraintStart_toEndOf="@+id/list_symbols" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_symbols"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="1dp"
+                    android:layout_marginVertical="12dp"
+                    android:padding="1dp"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_pages"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="1dp"
+                    android:layout_marginVertical="8dp"
+                    android:overScrollMode="always"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cl_score_colors"
+                    app:layout_constraintStart_toEndOf="@id/list_symbols"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:layout_goneMarginBottom="4dp"
+                    app:layout_goneMarginEnd="4dp"
+                    app:layout_goneMarginStart="4dp"
+                    app:layout_goneMarginTop="4dp" />
+
+                <View
+                    android:id="@+id/left_bottom_area"
+                    android:layout_width="90dp"
+                    android:layout_height="160dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:id="@+id/left_top_area"
+                    android:layout_width="90dp"
+                    android:layout_height="160dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header" />
+
+                <View
+                    android:id="@+id/right_bottom_area"
+                    android:layout_width="90dp"
+                    android:layout_height="160dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <View
+                    android:id="@+id/right_top_area"
+                    android:layout_width="90dp"
+                    android:layout_height="160dp"
+                    android:visibility="gone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header" />
+
+                <com.bytepace.dimusco.views.ZoomView
+                    android:id="@+id/cv_custom_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/list_pages"
+                    app:layout_constraintEnd_toStartOf="@+id/cl_score_colors"
+                    app:layout_constraintStart_toStartOf="@+id/list_pages"
+                    app:layout_constraintTop_toTopOf="@+id/list_pages"
+                    app:square_color="@color/black"
+                    app:square_size="@dimen/sqareSize" />
+
+                <View
+                    android:id="@+id/center_area"
+                    android:layout_width="90dp"
+                    android:layout_height="160dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <SeekBar
+                    android:id="@+id/seek_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:thumb="@drawable/thumb_image"
+                    app:layout_constraintBottom_toTopOf="@+id/list_score_markers"
+                    app:layout_constraintEnd_toStartOf="@+id/cl_score_colors"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/list_symbols" />
+
+                <ImageView
+                    android:id="@+id/page_image"
+                    android:layout_width="180dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/page_border"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1.414"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <ProgressBar
+                    android:id="@+id/progress_loading"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/brown"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/page_image"
+                    app:layout_constraintEnd_toEndOf="@+id/page_image"
+                    app:layout_constraintStart_toStartOf="@+id/page_image"
+                    app:layout_constraintTop_toTopOf="@+id/page_image" />
+
+                <TextView
+                    android:id="@+id/page_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_text_button"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/page_image"
+                    app:layout_constraintEnd_toEndOf="@+id/page_image"
+                    app:layout_constraintStart_toStartOf="@+id/page_image"
+                    app:layout_constraintVertical_bias="0" />
+
+
+                <ImageView
+                    android:id="@+id/eraser_preview"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/circle_line"
+                    android:outlineProvider="background"
+                    android:visibility="@{viewModel.selectedMode == EditMode.ERASER ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:scale="@{viewModel.eraserThickness}"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/brush_preview"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="@{viewModel.transparency}"
+                    android:background="@drawable/circle"
+                    android:outlineProvider="background"
+                    android:visibility="@{viewModel.selectedMode != EditMode.ERASER ? View.VISIBLE : View.GONE}"
+                    app:clipToOutline="@{true}"
+                    app:colorSrc="@{viewModel.selectedColorValue}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:scale="@{viewModel.lineThickness}"
+                    tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

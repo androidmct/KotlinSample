@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="language"
+            type="com.bytepace.dimusco.data.model.Language" />
+
+        <variable
+            name="isSelected"
+            type="boolean" />
+    </data>
+
+    <TextView
+        style="@style/SettingsButton"
+        android:drawableEnd="@{isSelected ? @drawable/ic_checked : null}"
+        android:text="@{language.toString()}"
+        tools:drawableEnd="@drawable/ic_checked"
+        tools:ignore="RtlSymmetry"
+        tools:text="Deutsch - German" />
+</layout>

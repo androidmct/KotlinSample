@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="boolean" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_margin="0.5dp"
+        android:background="@android:color/black">
+
+        <ImageView
+            android:id="@+id/item_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0.5dp"
+            android:clickable="false"
+            android:padding="5dp"
+            android:src="@{isSelected ? @drawable/ic_checked : null, default=@drawable/ic_checked}"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+</layout>

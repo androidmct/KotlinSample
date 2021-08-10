@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import
+            alias="Constants"
+            type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+        <import
+            alias="Localization"
+            type="com.bytepace.dimusco.utils.LocalizationKt" />
+
+        <variable
+            name="viewModel"
+            type="com.bytepace.dimusco.ui.settings.edit.SettingsEditViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFFFF">
+
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header"
+            app:title="@{Localization.getTranslatedString(context, Constants.STR_GLOBAL_EDITORS)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_setEdit_defaults"
+            style="@style/SettingsButton"
+            android:background="@drawable/bg_settings_button"
+            android:onClick="onClickDefaults"
+            app:text="@{Constants.STR_GLOBAL_DEFAULTS}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            tools:ignore="RtlSymmetry"
+            tools:text="@string/global_defaults" />
+
+        <TextView
+            android:id="@+id/txt_setEdit_colors"
+            style="@style/SettingsButton"
+            android:background="@drawable/bg_settings_button"
+            android:onClick="onClickColors"
+            app:text="@{Constants.STR_GLOBAL_COLORS}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_setEdit_defaults"
+            tools:ignore="RtlSymmetry"
+            tools:text="@string/global_colors" />
+
+        <TextView
+            android:id="@+id/txt_setEdit_symbols"
+            style="@style/SettingsButton"
+            android:background="@drawable/bg_settings_button"
+            android:onClick="onClickSymbols"
+            app:text="@{Constants.STR_GLOBAL_SYMBOLS}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_setEdit_colors"
+            tools:ignore="RtlSymmetry"
+            tools:text="@string/global_symbols" />
+
+        <TextView
+            android:id="@+id/txt_setEdit_layers"
+            style="@style/SettingsButton"
+            android:background="@drawable/bg_settings_button"
+            android:onClick="onClickLayers"
+            app:text="@{Constants.STR_GLOBAL_LAYERS}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_setEdit_symbols"
+            tools:ignore="RtlSymmetry"
+            tools:text="@string/global_layers" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_setEdit_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_settings_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onClickConfirm"
+            android:paddingTop="16dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_setEdit_layers"
+            app:layout_constraintTop_toBottomOf="@+id/txt_setEdit_layers"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/generalSettings_confirmEdit"
+                android:textColor="@color/brown"
+                android:textSize="20sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chb_setEdit_confirm"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/generalSettings_confirmEdit" />
+
+            <CheckBox
+                android:id="@+id/chb_setEdit_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@drawable/checkbox"
+                android:clickable="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/label"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

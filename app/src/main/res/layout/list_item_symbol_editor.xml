@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="boolean" />
+    </data>
+
+    <ImageView
+        android:id="@+id/item_symbol"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_margin="0.5dp"
+        android:background="@{isSelected ? @drawable/bg_symbol : null}"
+        android:padding="5dp"
+        app:tint="@android:color/black"
+        tools:ignore="ContentDescription" />
+</layout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import
+            alias="Constants"
+            type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+        <import
+            alias="Localization"
+            type="com.bytepace.dimusco.utils.LocalizationKt" />
+
+        <import
+            alias="Formatter"
+            type="java.lang.Float"/>
+
+        <variable
+            name="viewModel"
+            type="com.bytepace.dimusco.ui.settings.edit.defaults.SettingsDefaultsViewModel" />
+
+        <variable
+            name="formatter"
+            type="java.text.DecimalFormat" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/seeker_transparency"
+            layout="@layout/layout_seeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:label="@{Localization.getTranslatedString(context, Constants.STR_GLOBAL_TRANSPARENCY)}"
+            app:maxValue="@{1.0f}"
+            app:minValue="@{0f}"
+            app:progress="@{viewModel.settings.transparency}"
+            app:value="@{Formatter.valueOf(formatter.format(viewModel.settings.transparency).replace(',', '.'))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+        <include
+            android:id="@+id/seeker_line"
+            layout="@layout/layout_seeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:label="@{Localization.getTranslatedString(context, Constants.STR_GLOBAL_LINE_THICKNESS)}"
+            app:maxValue="@{Constants.LINE_THICKNESS_MAX}"
+            app:minValue="@{Constants.LINE_THICKNESS_MIN}"
+            app:progress="@{viewModel.settings.lineThickness}"
+            app:value="@{Formatter.valueOf(formatter.format(viewModel.settings.lineThickness).replace(',', '.'))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seeker_transparency" />
+
+        <include
+            android:id="@+id/seeker_eraser"
+            layout="@layout/layout_seeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:label="@{Localization.getTranslatedString(context, Constants.STR_GLOBAL_ERASER_THICKNESS)}"
+            app:maxValue="@{Constants.ERASER_THICKNESS_MAX}"
+            app:minValue="@{Constants.ERASER_THICKNESS_MIN}"
+            app:progress="@{viewModel.settings.eraserThickness}"
+            app:value="@{Formatter.valueOf(formatter.format(viewModel.settings.eraserThickness).replace(',', '.'))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seeker_line" />
+
+        <include
+            android:id="@+id/seeker_size"
+            layout="@layout/layout_seeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:label="@{Localization.getTranslatedString(context, Constants.STR_GLOBAL_TEXT_SIZE)}"
+            app:maxValue="@{1.0f}"
+            app:minValue="@{0f}"
+            app:progress="@{viewModel.settings.textSize}"
+            app:value="@{Formatter.valueOf((formatter.format(viewModel.settings.textSize).replace(',', '.')))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seeker_eraser" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

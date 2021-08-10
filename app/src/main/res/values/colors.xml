@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="background">#F1F1F1</color>
+    <color name="brown">#2C2A26</color>
+    <color name="brownTransparent">#542C2A26</color>
+    <color name="orange">#FDAB3B</color>
+    <color name="orangeDark">#FD8A10</color>
+    <color name="divider">#C7C7C7</color>
+    <color name="disabled">#696969</color>
+    <color name="dialog_dim">#52000000</color>
+    <color name="inactive_layer">#80808080</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightBlue">#33B2FF</color>
+
+    <color name="purple_200">#ce93d8</color>
+    <color name="purple_500">#9c27b0</color>
+    <color name="purple_700">#7b1fa2</color>
+    <color name="teal_200">#80cbc4</color>
+    <color name="teal_700">#00796b</color>
+    <color name="black">#212121</color>
+
+    <color name="cl0">#000000</color>
+    <color name="cl1">#FFFFFF</color>
+    <color name="cl2">#FF0000</color>
+    <color name="cl3">#00FF00</color>
+    <color name="cl4">#0000FF</color>
+    <color name="cl5">#FFFF00</color>
+    <color name="cl6">#00FFFF</color>
+    <color name="cl7">#FF00FF</color>
+    <color name="cl8">#C0C0C0</color>
+    <color name="cl9">#808080</color>
+    <color name="cl10">#800000</color>
+    <color name="cl11">#808000</color>
+    <color name="cl12">#008000</color>
+    <color name="cl13">#800080</color>
+    <color name="cl14">#008080</color>
+    <color name="cl15">#000080</color>
+</resources>

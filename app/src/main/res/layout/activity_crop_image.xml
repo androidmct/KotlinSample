@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown">
+
+    <com.canhub.cropper.CropImageView
+        android:id="@+id/cropImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        app:cropBorderCornerColor="@android:color/white"
+        app:cropBorderCornerOffset="2dp"
+        app:cropBorderCornerThickness="2dp"
+        app:cropInitialCropWindowPaddingRatio="0"
+        app:cropMaxZoom="10"
+        app:cropMultiTouchEnabled="true"
+        app:cropScaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@id/actions_flow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_crop_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textColor="@color/lightBlue" />
+
+    <ImageView
+        android:id="@+id/btn_crop_restore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_restore"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/btn_crop_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:textColor="#FDAB3B"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/actions_flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:constraint_referenced_ids="btn_crop_cancel, btn_crop_restore, btn_crop_done"
+        app:flow_horizontalAlign="center"
+        app:flow_horizontalStyle="spread_inside"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

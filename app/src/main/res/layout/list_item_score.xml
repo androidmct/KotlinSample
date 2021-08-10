@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_settings_button">
+
+    <ImageButton
+        android:id="@+id/btnDelLoad"
+        style="@style/ScoreItemButton"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toStartOf="@+id/btnSetting"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/btnSetting"
+        style="@style/ScoreItemButton"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintEnd_toStartOf="@+id/btnOpen"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btnOpen"
+        style="@style/ScoreItemButton.Open"
+        android:src="@drawable/ic_score_open"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/buttonsFlow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:constraint_referenced_ids="btnDelLoad, btnSetting, btnOpen"
+        app:flow_horizontalAlign="center"
+        app:flow_horizontalGap="8dp"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/percentageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:text="100%"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loadingProgressBar"
+        app:layout_constraintStart_toEndOf="@+id/composerTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:text="100%" />
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        style="@style/ScoreItemButton"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/progressFlow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="percentageTextView, loadingProgressBar"
+        app:flow_horizontalAlign="center"
+        app:flow_horizontalGap="8dp"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="progressFlow,buttonsFlow" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        style="@style/ScoreItemText"
+        android:layout_marginEnd="8dp"
+        android:text="Caerdydd 125"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelLoad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:text="Caerdydd 125" />
+
+    <TextView
+        android:id="@+id/composerTextView"
+        style="@style/ScoreItemText"
+        android:fontFamily="sans-serif-light"
+        android:text="Jenkins, Karl"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/nameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:text="Jenkins, Karl" />
+
+    <TextView
+        android:id="@+id/instrumentTextView"
+        style="@style/ScoreItemText"
+        android:fontFamily="sans-serif-light"
+        android:text="Trombone 2"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/composerTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/composerTextView"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:text="Trombone 2" />
+
+    <TextView
+        android:id="@+id/editionTextView"
+        style="@style/ScoreItemText"
+        android:fontFamily="sans-serif-light"
+        android:text="Orchestral Part"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/instrumentTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instrumentTextView"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:text="Orchestral Part" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/titlesFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:visibility="visible"
+        app:constraint_referenced_ids="nameTextView, composerTextView, instrumentTextView, editionTextView"
+        app:flow_horizontalAlign="center"
+        app:flow_horizontalGap="8dp"
+        app:flow_maxElementsWrap="1"
+        app:flow_wrapMode="chain"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

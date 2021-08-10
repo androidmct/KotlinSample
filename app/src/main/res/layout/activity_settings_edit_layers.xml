@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import
+            alias="Constants"
+            type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+        <import
+            alias="Localization"
+            type="com.bytepace.dimusco.utils.LocalizationKt" />
+
+        <variable
+            name="viewModel"
+            type="com.bytepace.dimusco.ui.settings.edit.layers.SettingsEditLayersViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            style="@style/SettingsPanel"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header">
+
+            <TextView
+                style="@style/SettingsLabel"
+                app:text="@{Constants.STR_LAYER_MODES}"
+                tools:text="@string/layer_modes" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                style="@style/SettingsLabel"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:checked="@{viewModel.settings.imageDrawings}"
+                android:onCheckedChanged="@{(_, isChecked) -> viewModel.onDrawingsChanged(isChecked)}"
+                app:text="@{Constants.STR_LAYER_DRAWINGS}"
+                tools:text="@string/layer_drawings_image" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                style="@style/SettingsLabel"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:checked="@{viewModel.settings.imageSymbols}"
+                android:onCheckedChanged="@{(_, isChecked) -> viewModel.onSymbolsChanged(isChecked)}"
+                app:text="@{Constants.STR_LAYER_SYMBOLS}"
+                tools:text="@string/layer_symbols_image" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                style="@style/SettingsLabel"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:checked="@{viewModel.settings.imageText}"
+                android:onCheckedChanged="@{(_, isChecked) -> viewModel.onTextChanged(isChecked)}"
+                app:text="@{Constants.STR_LAYER_TEXT}"
+                tools:text="@string/layer_text_image" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

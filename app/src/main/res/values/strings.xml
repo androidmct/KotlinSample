@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">dimusco</string>
+    <string name="app_version">App version: %s</string>
+    <string name="score_page_counter">%d/%d</string>
+    <string name="score_page_counter_with_special">%d/%d%s</string>
+    <string name="global_page_sequence">%s</string>
+
+    <string name="global_bold">Bold</string>
+    <string name="global_edit_tab_name">Edit Tab Name</string>
+    <string name="global_cancel">Cancel</string>
+    <string name="global_change">Change</string>
+    <string name="global_colors">Colors</string>
+    <string name="global_composerAscending">Composer - Ascending</string>
+    <string name="global_composerDescending">Composer - Descending</string>
+    <string name="global_defaults">Defaults</string>
+    <string name="global_dimusco">Dimusco</string>
+    <string name="global_editors">Edit</string>
+    <string name="global_email">Email</string>
+    <string name="global_eraserThickness">Eraser Thickness</string>
+    <string name="global_error">Error</string>
+    <string name="global_general">General</string>
+    <string name="global_globalSelection">Global Selection</string>
+    <string name="global_home">Home</string>
+    <string name="global_italic">Italic</string>
+    <string name="global_language">Language</string>
+    <string name="global_layer">Layer</string>
+    <string name="global_layers">Layers</string>
+    <string name="global_lineThickness">Line Thickness</string>
+    <string name="global_login">Login</string>
+    <string name="global_logout">Logout</string>
+    <string name="global_minutes">Minutes</string>
+    <string name="global_nameAscending">Name - Ascending</string>
+    <string name="global_nameDescending">Name - Descending</string>
+    <string name="global_no">No</string>
+    <string name="global_ok">Okay</string>
+    <string name="global_pages">Pages</string>
+    <string name="global_password">Password</string>
+    <string name="global_personalSelection">Personal Selection</string>
+    <string name="global_reset">Reset</string>
+    <string name="global_seconds">Seconds</string>
+    <string name="global_send">Send</string>
+    <string name="global_sequence">Sequence</string>
+    <string name="global_settings">Settings</string>
+    <string name="global_sortBy">Sort by</string>
+    <string name="global_special">Special</string>
+    <string name="global_store">Store</string>
+    <string name="global_deactivate">Deactivate</string>
+    <string name="global_activate">Activate</string>
+    <string name="global_symbolSize">Symbol Size</string>
+    <string name="global_symbols">Symbols</string>
+    <string name="global_textSize">Text Size</string>
+    <string name="global_textStyle">Text Style</string>
+    <string name="global_transparency">Transparency</string>
+    <string name="global_wait">Please wait…</string>
+    <string name="global_yes">Yes</string>
+    <string name="global_done">Done</string>
+
+    <string name="alert_bookIsUnavailable">The score is not available</string>
+    <string name="alert_errorUnzip">Unpack error</string>
+    <string name="alert_fileNotFound">Error 10001, file not found</string>
+    <string name="alert_iphone">Editing is not available on iPhone</string>
+    <string name="alert_layerImported">Layer Imported</string>
+    <string name="alert_layerIsUnavailable">Layer not available</string>
+    <string name="alert_layerNotFound">Layer not found</string>
+    <string name="alert_mismatch">Version mismatch</string>
+    <string name="alert_noActiveLayer">No Active Layer</string>
+    <string name="alert_noInternet">No internet connection</string>
+    <string name="alert_offlineWrongPassword">If you didn\'t login on this device before or you changed your password in the shop, then try again after you connected this device with the internet</string>
+
+    <string name="generalSettings_confirmEdit">Confirm saving of changes</string>
+    <string name="generalSettings_enterSequence">Define page sequence</string>
+    <string name="generalSettings_horizontal">Horizontal</string>
+    <string name="generalSettings_pageChangeDirection">Page Change</string>
+    <string name="generalSettings_pageSequenceSaved">Page sequence saved</string>
+    <string name="generalSettings_receiveSettings">Accept central settings</string>
+    <string name="generalSettings_rightNumberInvalid">Right number has to be more than left one</string>
+    <string name="generalSettings_sendSettings">Update central settings</string>
+    <string name="generalSettings_sequenceInvalid">Page Sequence is invalid</string>
+    <string name="generalSettings_vertical">Vertical</string>
+    <string name="generalSettings_wrongRange">Wrong definition of range:</string>
+
+    <string name="forgotPassword_backToLogin">Back to Login?</string>
+    <string name="forgotPassword_enterYourEmail">Enter your email address and we will send you a link to reset your password.</string>
+    <string name="forgotPassword_forgotPassword">Forgot Your Password,</string>
+
+    <string name="layer_drawings_image">Drawing: Image</string>
+    <string name="layer_modes">Layer data type: object / Image</string>
+    <string name="layer_symbols_image">Symbols: Image</string>
+    <string name="layer_text_image">Text: Image</string>
+
+    <string name="layersSettings_add">Add Layer</string>
+    <string name="layersSettings_deleteSuccess">has been deleted</string>
+    <string name="layersSettings_doYouWantToDelete">Do you really want to delete?</string>
+    <string name="layersSettings_editLayerName">Edit Layer Name</string>
+    <string name="layersSettings_import">Import Layers</string>
+    <string name="layersSettings_layerName">Layer Name</string>
+    <string name="layersSettings_pleaseAddLayer">Please add a Layer first</string>
+    <string name="layersSettings_pleaseAddName">Please add the layer name</string>
+
+    <string name="markerSettings_add">Add Marker</string>
+    <string name="markerSettings_edit">Edit Marker</string>
+    <string name="markerSettings_pageNumber">Page Number</string>
+    <string name="markerSettings_pleaseAdd">Please add the page number</string>
+    <string name="markerSettings_remove">Remove Marker</string>
+
+    <string name="login_enterValidEmail">Please enter Email</string>
+    <string name="login_enterValidPassword">Please enter Password</string>
+    <string name="login_forgotPassword">Forgot Password?</string>
+    <string name="login_pleaseEnterEmail">Please enter your Email</string>
+    <string name="login_pleaseEnterPassword">Please enter your Password</string>
+    <string name="login_rememberPassword">Remember password</string>
+    <string name="login_restore">Restore App?</string>
+    <string name="login_createAccount">Create Account</string>
+    <string name="login_createAccountInGerman">Konto erstellen </string>
+    <string name="login_resetPassword">Reset Password</string>
+    <string name="login_resetPasswordInGerman">Passwort zurücksetzen</string>
+    <string name="login_signInToContinue">please login</string>
+    <string name="login_welcomeBack">Welcome,</string>
+    <string name="login_language">%s - %s</string>
+
+    <string name="logout_areYouSure">Do you want to logout?</string>
+    <string name="logout_yes">Yes, Logout</string>
+
+    <string name="languageSettings_selectLanguage">Select Language</string>
+    <string name="remove_score">This will remove score from this device. You can download it any time again.</string>
+    <string name="restore_doYouWant">Do you really want to reset your data?</string>
+    <string name="upgrade_hint">This version of the app is no longer supported. Please install current version from AppStore.</string>
+    <string name="colors_setColor">Set Color</string>
+    <string name="edit_link_timeout">Linked edit timeout</string>
+    <string name="editor_doYouWantToSave">Do you want to save your changes?</string>
+    <string name="empty_library">Your library is empty</string>
+
+    <string name="no_internet_connection">No Internet Connection !!</string>
+    <string name="forgot_password_link_txt">If you have forgotten\nyour password,\ngo to our website\n\n
+        dimusco.com\n\n and create a new one.\n\n At dimusco, the administration\nof music scores\n
+        takes place on the websites, the use is done via apps.
+    </string>
+    <string name="create_account_link_text">If you don\'t have an\naccount yet,\ngo to our website\n\n
+    dimusco.com\n\nand create one.\n\nAt dimusco, the administration\nof music scores\ntakes place on the website, the\n
+    use is done via apps.</string>
+
+    <string-array name="symbols_name">
+        <item>symbol_0</item>
+        <item>symbol_1</item>
+        <item>symbol_2</item>
+        <item>symbol_3</item>
+        <item>symbol_4</item>
+        <item>symbol_5</item>
+        <item>symbol_6</item>
+        <item>symbol_7</item>
+        <item>symbol_8</item>
+        <item>symbol_9</item>
+        <item>symbol_10</item>
+        <item>symbol_11</item>
+        <item>symbol_12</item>
+        <item>symbol_13</item>
+        <item>symbol_14</item>
+        <item>symbol_15</item>
+        <item>symbol_16</item>
+        <item>symbol_17</item>
+        <item>symbol_18</item>
+        <item>symbol_19</item>
+        <item>symbol_20</item>
+        <item>symbol_21</item>
+        <item>symbol_22</item>
+        <item>symbol_23</item>
+        <item>symbol_24</item>
+        <item>symbol_25</item>
+        <item>symbol_26</item>
+        <item>symbol_27</item>
+        <item>symbol_28</item>
+        <item>symbol_29</item>
+        <item>symbol_30</item>
+        <item>symbol_31</item>
+        <item>symbol_32</item>
+        <item>symbol_33</item>
+        <item>symbol_34</item>
+        <item>symbol_35</item>
+        <item>symbol_36</item>
+        <item>symbol_37</item>
+        <item>symbol_38</item>
+        <item>symbol_39</item>
+        <item>symbol_40</item>
+        <item>symbol_41</item>
+        <item>symbol_42</item>
+        <item>symbol_43</item>
+        <item>symbol_44</item>
+        <item>symbol_45</item>
+        <item>symbol_46</item>
+        <item>symbol_47</item>
+        <item>symbol_48</item>
+        <item>symbol_49</item>
+        <item>symbol_50</item>
+        <item>symbol_51</item>
+        <item>symbol_52</item>
+        <item>symbol_53</item>
+        <item>symbol_54</item>
+        <item>symbol_55</item>
+        <item>symbol_56</item>
+        <item>symbol_57</item>
+        <item>symbol_58</item>
+        <item>symbol_59</item>
+        <item>symbol_60</item>
+        <item>symbol_61</item>
+        <item>symbol_62</item>
+        <item>symbol_63</item>
+        <item>symbol_64</item>
+        <item>symbol_65</item>
+        <item>symbol_66</item>
+        <item>symbol_67</item>
+        <item>symbol_68</item>
+        <item>symbol_69</item>
+        <item>symbol_70</item>
+        <item>symbol_71</item>
+        <item>symbol_72</item>
+        <item>symbol_73</item>
+        <item>symbol_74</item>
+    </string-array>
+</resources>

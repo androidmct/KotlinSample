@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import
+            alias="Constants"
+            type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+        <import
+            alias="Localization"
+            type="com.bytepace.dimusco.utils.LocalizationKt" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bytepace.dimusco.ui.settings.general.SettingsGeneralViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_define_page_sequence"
+            style="@style/SettingsPanel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="@{viewModel.showPageSequence ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header">
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/SettingsCategoryLabel"
+                app:text="@{Constants.STR_SETTINGS_SEQUENCE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/generalSettings_enterSequence" />
+
+            <EditText
+                android:id="@+id/page_sequence"
+                style="@style/Input.Settings"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:digits="0123456789,-"
+                android:text="@={viewModel.sequence}"
+                app:hint="@{Constants.STR_GLOBAL_SEQUENCE}"
+                android:importantForAutofill="no"
+                app:layout_constraintEnd_toEndOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:hint="@string/global_sequence"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@+id/page_sequence_button"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:text="@string/global_store"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/page_sequence"
+                app:layout_constraintStart_toStartOf="@+id/page_sequence"
+                app:layout_constraintTop_toBottomOf="@+id/page_sequence"
+                tools:text='@{viewModel.haveSequence ? "@string/global_deactivate" : "@string/global_store", default="@string/gloabal_store"}' />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_page_change"
+            style="@style/SettingsPanel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_define_page_sequence">
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/SettingsCategoryLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:text="@{Constants.STR_SETTINGS_DIRECTION}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/generalSettings_pageChangeDirection" />
+
+            <include
+                android:id="@+id/chb_general_hor"
+                layout="@layout/layout_checkbox_settings"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                app:checked="@{viewModel.settings.pageScrollingHorizontal}"
+                app:clickable="@{!viewModel.settings.pageScrollingHorizontal}"
+                app:label="@{Constants.STR_SETTINGS_HORIZONTAL}"
+                app:onClick="@{() -> viewModel.setScrollDirection(true)}"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <include
+                android:id="@+id/chb_general_ver"
+                layout="@layout/layout_checkbox_settings"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                app:checked="@{!viewModel.settings.pageScrollingHorizontal}"
+                app:clickable="@{viewModel.settings.pageScrollingHorizontal}"
+                app:label="@{Constants.STR_SETTINGS_VERTICAL}"
+                app:onClick="@{() -> viewModel.setScrollDirection(false)}"
+                app:layout_constraintEnd_toEndOf="@+id/chb_general_hor"
+                app:layout_constraintStart_toStartOf="@+id/chb_general_hor"
+                app:layout_constraintTop_toBottomOf="@+id/chb_general_hor" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/chb_general_update"
+            layout="@layout/layout_checkbox_settings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:label="@{Constants.STR_SETTINGS_CENTRAL_UPDATE}"
+            app:layout_constraintEnd_toEndOf="@+id/cl_page_change"
+            app:layout_constraintStart_toStartOf="@+id/cl_page_change"
+            app:layout_constraintTop_toBottomOf="@+id/cl_page_change" />
+
+        <View
+            android:id="@+id/view"
+            style="@style/SettingsDivider"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/cl_page_change"
+            app:layout_constraintStart_toStartOf="@+id/cl_page_change"
+            app:layout_constraintTop_toBottomOf="@+id/chb_general_update" />
+
+        <include
+            android:id="@+id/chb_general_accept"
+            layout="@layout/layout_checkbox_settings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            app:label="@{Constants.STR_SETTINGS_CENTRAL_ACCEPT}"
+            app:layout_constraintEnd_toEndOf="@+id/chb_general_update"
+            app:layout_constraintStart_toStartOf="@+id/chb_general_update"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <View
+            android:id="@+id/view2"
+            style="@style/SettingsDivider"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/cl_page_change"
+            app:layout_constraintStart_toStartOf="@+id/cl_page_change"
+            app:layout_constraintTop_toBottomOf="@+id/chb_general_accept" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2">
+
+            <TextView
+                style="@style/SettingsCategoryLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="App Version:"
+                android:textSize="20dp" />
+
+            <TextView
+                style="@style/SettingsCategoryLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=" 0.3(1)"
+                android:textColor="@color/lightBlue"
+                android:textSize="20dp"
+
+                />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

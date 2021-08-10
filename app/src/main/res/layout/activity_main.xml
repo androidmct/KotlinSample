@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <import
+            alias="Constants"
+            type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+        <variable
+            name="viewModel"
+            type="com.bytepace.dimusco.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_logo"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:background="@drawable/bg_login"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            app:text="@{Constants.STR_GLOBAL_DIMUSCO}"
+            android:textColor="@color/orange"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/global_dimusco" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <TextView
+            android:id="@+id/label_welcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:text="@{Constants.STR_LOGIN_WELCOME}"
+            android:textColor="@color/brown"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btn_locale"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/text_logo" />
+
+        <TextView
+            android:id="@+id/label_welcome2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/brown"
+            android:textSize="17sp"
+            app:text="@{Constants.STR_LOGIN_SIGN_IN}"
+            app:layout_constraintEnd_toStartOf="@id/btn_locale"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/label_welcome" />
+
+        <ImageButton
+            android:id="@+id/btn_locale"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@null"
+            android:onClick="@{() -> viewModel.onClickLocale()}"
+            android:src="@drawable/ic_locale"
+            app:contentDescription="@{Constants.STR_SELECT_LANGUAGE}"
+            app:layout_constraintBottom_toBottomOf="@id/label_welcome2"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintTop_toTopOf="@id/label_welcome"
+            tools:ignore="ContentDescription" />
+
+        <!--            android:onClick="@{() -> viewModel.onClickLocale()}"-->
+
+        <EditText
+            android:id="@+id/input_email"
+            style="@style/Input.Login"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:drawableStart="@drawable/ic_email"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/label_welcome2"
+            app:hint="@{Constants.STR_GLOBAL_EMAIL}"
+            tools:hint="@string/global_email"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/input_password"
+            style="@style/Input.Login"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingEnd="40dp"
+            android:text="@={viewModel.password}"
+            app:hint="@{Constants.STR_GLOBAL_PASSWORD}"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/input_email"
+            app:passwordVisible="@{viewModel.showPassword}"
+            tools:hint="@string/global_password"
+            tools:ignore="LabelFor,RtlSymmetry,TextFields" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@null"
+            android:checked="@={viewModel.showPassword}"
+            android:button="@drawable/ic_password_visibility"
+            app:layout_constraintBottom_toBottomOf="@id/input_password"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintEnd_toEndOf="@id/input_password"
+            app:layout_constraintTop_toTopOf="@id/input_password" />
+
+        <include
+            android:id="@+id/checkbox_remember"
+            layout="@layout/layout_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            app:checked="@{viewModel.rememberPassword}"
+            app:label="@{Constants.STR_LOGIN_REMEMBER_PASSWORD}"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/input_password"
+            app:onClick="@{() -> viewModel.toggleRememberPassword()}" />
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/checkbox_remember"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="44dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:onClick="onClickRememberPassword"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guide_start"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/input_password">-->
+<!--            &lt;!&ndash;        android:onClick="@{onClick}"&ndash;&gt;-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:text="@string/login_rememberPassword"-->
+<!--                android:textSize="17sp"-->
+<!--                app:layout_constrainedWidth="true"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/chb_remember_password"-->
+<!--                app:layout_constraintHorizontal_chainStyle="spread_inside"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--            &lt;!&ndash;        app:text="@{label}"&ndash;&gt;-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/chb_remember_password"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@null"-->
+<!--                android:button="@drawable/checkbox"-->
+
+<!--                android:clickable="false"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@id/label"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--            &lt;!&ndash;        android:checked="@{checked}"&ndash;&gt;-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        &lt;!&ndash;            app:checked="@{viewModel.rememberPassword}"&ndash;&gt;-->
+<!--        &lt;!&ndash;            app:label="@{Constants.STR_LOGIN_REMEMBER_PASSWORD}"&ndash;&gt;-->
+<!--        &lt;!&ndash;            app:onClick="@{() -> viewModel.toggleRememberPassword()}"&ndash;&gt;-->
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/Button"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/baloo"
+            app:text="@{Constants.STR_GLOBAL_LOGIN}"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_remember"
+            tools:text="@string/global_login" />
+
+        <TextView
+            android:id="@+id/btn_createAccount"
+            style="@style/TextButton"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+
+            android:onClick="onClickCreateAccount"
+            android:text="@{viewModel.language.equals(`en`) ? @string/login_createAccount : @string/login_createAccountInGerman }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_resetPassword"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/login_createAccount" />
+        <!--         Currently create account text have some issue-->
+        <!--            app:text="@{Constants.STR_LOGIN_CREATE_ACCOUNT}"-->
+
+
+        <TextView
+            android:id="@+id/btn_resetPassword"
+            style="@style/TextButton"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+
+            android:onClick="onClickResetPassword"
+            android:text="@{viewModel.language.equals(`en`) ? @string/login_resetPassword : @string/login_resetPasswordInGerman }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_restore"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_createAccount"
+
+            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/login_resetPassword" />
+
+        <TextView
+            android:id="@+id/btn_restore"
+            style="@style/TextButton"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="onClickRestoreApp"
+            app:text="@{Constants.STR_LOGIN_RESTORE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_resetPassword"
+
+            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/login_restore" />
+
+        <!--            app:text="@{Constants.STR_LOGIN_RESTORE}"-->
+
+
+        <!--    android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}"-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/dialog_dim"
+            android:clickable="true"
+            android:elevation="10dp"
+            android:focusable="true"
+
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/label_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dialog"
+                android:paddingStart="16dp"
+                android:paddingTop="64dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/brown"
+                android:textSize="16sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:text="@string/global_wait" />
+
+            <!--                app:text="@{Constants.STR_GLOBAL_WAIT}"-->
+
+            <ProgressBar
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/brown"
+                app:layout_constraintEnd_toEndOf="@id/label_loading"
+                app:layout_constraintStart_toStartOf="@id/label_loading"
+                app:layout_constraintTop_toTopOf="@id/label_loading" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/ic_logo_dimusco"
+            app:layout_constraintEnd_toEndOf="@+id/text_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--    </androidx.core.widget.NestedScrollView>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

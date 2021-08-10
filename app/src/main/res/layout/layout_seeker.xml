@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+            <import type="kotlin.jvm.functions.Function1" />
+
+            <import type="kotlin.Unit" />
+
+                <import
+                    alias="Constants"
+                    type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+                <import
+                    alias="Localization"
+                    type="com.bytepace.dimusco.utils.LocalizationKt" />
+
+                <variable
+                    name="label"
+                    type="String" />
+
+                <variable
+                    name="value"
+                    type="float" />
+
+                <variable
+                    name="progress"
+                    type="float" />
+
+                <variable
+                    name="maxValue"
+                    type="float" />
+
+                <variable
+                    name="minValue"
+                    type="float" />
+
+        </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/SettingsPanel">
+
+                <TextView
+                    android:id="@+id/text_label"
+                    style="@style/SettingsLabel"
+                    android:layout_width="0dp"
+                    android:text="@{label}"
+                    app:layout_constraintEnd_toStartOf="@id/text_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/global_transparency" />
+
+                <TextView
+                    android:id="@+id/text_value"
+                    style="@style/SettingsLabel"
+                    android:layout_width="wrap_content"
+                    android:text="@{Float.toString(value)}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/text_label"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="0.2" />
+
+                <ImageView
+                    android:id="@+id/image_minus"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="4dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_minus"
+                    app:layout_constraintBottom_toBottomOf="@id/seek_bar"
+                    app:layout_constraintEnd_toStartOf="@id/seek_bar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/seek_bar"
+                    tools:ignore="ContentDescription" />
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/seek_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:max="@{Math.round((maxValue - minValue) * 100)}"
+                    android:progress="@{Math.round((progress - minValue) * 100)}"
+                    android:progressTint="@android:color/black"
+                    android:thumb="@drawable/seekbar_thumb"
+                    app:layout_constraintEnd_toEndOf="@id/image_plus"
+                    app:layout_constraintStart_toEndOf="@id/image_minus"
+                    app:layout_constraintTop_toBottomOf="@id/text_label"
+                    tools:progress="69" />
+
+                <ImageView
+                    android:id="@+id/image_plus"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_plus"
+                    app:layout_constraintBottom_toBottomOf="@id/seek_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/seek_bar"
+                    app:layout_constraintTop_toTopOf="@id/seek_bar"
+                    tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

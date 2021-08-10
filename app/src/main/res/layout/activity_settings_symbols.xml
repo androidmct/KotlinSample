@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import
+            alias="Constants"
+            type="com.bytepace.dimusco.utils.ConstantsKt" />
+
+        <import
+            alias="Image"
+            type="com.bytepace.dimusco.utils.ImageKt" />
+
+        <import
+            alias="Localization"
+            type="com.bytepace.dimusco.utils.LocalizationKt" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bytepace.dimusco.ui.settings.edit.symbols.SettingsSymbolsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/SettingsLabel"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:text="@{Constants.STR_GLOBAL_PERSONAL_SELECTION}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            tools:text="@string/global_personalSelection" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_personal_symbols"
+            style="@style/SettingsColorsSymbolsList"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/SettingsLabel"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:text="@{Constants.STR_GLOBAL_GLOBAL_SELECTION}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_personal_symbols"
+            tools:text="@string/global_globalSelection" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_global_symbols"
+            style="@style/SettingsColorsSymbolsList"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <include
+            android:id="@+id/seeker_size"
+            layout="@layout/layout_seeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="@{viewModel.selectedItem != null ? View.VISIBLE : View.GONE}"
+            app:label="@{Localization.getTranslatedString(context, Constants.STR_GLOBAL_SYMBOL_SIZE)}"
+            app:maxValue="@{2.5f}"
+            app:minValue="@{0.25f}"
+            app:progress="@{viewModel.settings.symbols[viewModel.selectedItem].scale}"
+            app:value="@{viewModel.settings.symbols[viewModel.selectedItem].scale}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_global_symbols" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_white_rounded"
+            android:visibility="@{viewModel.selectedItem != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seeker_size">
+
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:scaleX="@{viewModel.settings.symbols[viewModel.selectedItem].scale}"
+                android:scaleY="@{viewModel.settings.symbols[viewModel.selectedItem].scale}"
+                app:tint="@color/black"
+                app:bitmap="@{Image.getSymbolImage(viewModel.settings.symbols[viewModel.selectedItem].value)}"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
